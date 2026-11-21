@@ -1,6 +1,7 @@
 const partialLevels = [1, .42, .19, .105, .043, .025];
 const floor = .00008;
 const sampleRate = 32000;
+const mediaPeak = .85;
 const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
   (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
@@ -98,8 +99,11 @@ function renderWav(parts, milliseconds) {
   wav.setUint16(34, 16, true);
   wav.setUint32(36, 0x64617461); // data
   wav.setUint32(40, 2 * mix.length, true);
+  let peak = 0;
+  for (const sample of mix) peak = Math.max(peak, Math.abs(sample));
+  const gain = peak > 0 ? mediaPeak / peak : 1;
   for (let i = 0; i < mix.length; i += 1) {
-    const sample = Math.max(-1, Math.min(1, mix[i]));
+    const sample = mix[i] * gain;
     wav.setInt16(44 + 2 * i, Math.round(sample * 32767), true);
   }
   return new Blob([wav], { type: 'audio/wav' });

@@ -2,7 +2,7 @@ import {
   modes, item, names, sessionLength, rootsFor, defaultFilters, freshState,
   dueCards, makeQuestion, record, midiAnswer
 } from './engine.js';
-import { playAudio, stopAudio } from './audio.js?v=2';
+import { playAudio, stopAudio } from './audio.js?v=3';
 
 const storageKey = 'blue-note-practice-v1';
 let state = freshState();
@@ -148,9 +148,11 @@ function filters() {
   const mode = state.mode;
   const f = state.filters[mode];
   return '<section class="card side-card">' + title('Drill settings','sliders') +
-    '<p class="card-sub">Choose what goes into your practice.</p>' +
+    '<p class="card-sub">' + (mode === 'chord'
+      ? 'The key sets the available roots. Chords play in root position.'
+      : 'The key sets the available starting notes.') + '</p>' +
     filterSelect('key','Key',f.key,[['any','All keys'], ...names.map((name,i) => [i, name + ' major'])]) +
-    filterSelect('root',mode === 'chord' ? 'Root note' : 'Starting note',f.root,
+    filterSelect('root',mode === 'chord' ? 'Chord root' : 'Starting note',f.root,
       [['any', 'Any note'], ...rootsFor(f.key).map(i => [i,names[i]])]) +
     (mode === 'interval' ? filterSelect('direction','Direction',f.direction,
       [['ascending','Ascending'],['descending','Descending'],['mixed','Mixed']]) : '') +

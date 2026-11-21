@@ -44,10 +44,6 @@ svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width:
 .midi-box p { font-size: .77rem; color: #bdb4ce; margin: 8px 0 10px; overflow-wrap: anywhere; }
 .midi-box button { width: 100%; padding: 6px 8px; border: 1px solid #504367; border-radius: 6px; background: #2b233c; color: #e3d5ff; font-size: .8rem; font-weight: 640; }
 .midi-box button:hover { background: #403054; }
-.profile { display: flex; align-items: center; gap: 10px; padding: 0 4px; }
-.avatar { display: grid; place-items: center; width: 34px; height: 34px; background: #382955; color: #e6d7ff; border-radius: 50%; font-size: .75rem; font-weight: 700; }
-.profile strong, .profile div span { display: block; font-size: .82rem; }
-.profile div span { color: #bdb4ce; margin-top: 2px; font-size: .73rem; }
 .workspace { width: 100%; max-width: 1440px; margin: 0 auto; padding: 34px clamp(24px, 4vw, 59px) 36px; }
 .page-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; margin-bottom: 25px; }
 .page-head h1 { margin: 0; font-size: clamp(2.25rem,4vw,3.05rem); letter-spacing: -.061em; line-height: 1.05; font-weight: 750; }
@@ -172,7 +168,7 @@ kbd { display: inline-grid; place-items: center; min-width: 21px; height: 21px; 
   .sidebar nav { grid-column: 1 / -1; grid-row: 2; margin: 0; display: grid; grid-template-columns: repeat(3,1fr); gap: 5px; }
   .nav-item { justify-content: center; gap: 6px; padding: 8px 2px; font-size: .82rem; }
   .nav-item svg { width: 16px; height: 16px; }
-  .nav-label, .profile, .midi-heading { display: none; }
+  .nav-label, .midi-heading { display: none; }
   .sidebar-bottom { margin: 0; padding: 0; }
   .midi-box { background: none; padding: 0; border: 0; display: flex; align-items: center; gap: 5px; }
   .midi-box p { display: none; }

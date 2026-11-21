@@ -2,7 +2,7 @@ import {
   modes, item, names, sessionLength, rootsFor, defaultFilters, freshState,
   dueCards, makeQuestion, record, midiAnswer
 } from './engine.js';
-import { playAudio, stopAudio } from './audio.js';
+import { playAudio, stopAudio } from './audio.js?v=2';
 
 const storageKey = 'blue-note-practice-v1';
 let state = freshState();
